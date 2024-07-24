@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multimedia Website</title>
+</head>
+<body>
+    <h1>Multimedia Content</h1>
+    <h2>Images</h2>
+    {% for image in images %}
+        <h3>{{ image.title }}</h3>
+        <img src="{{ image.image.url }}" alt="{{ image.title }}">
+    {% endfor %}
+    
+    <h2>Videos</h2>
+    {% for video in videos %}
+        <h3>{{ video.title }}</h3>
+        <video width="320" height="240" controls>
+            <source src="{{ video.video.url }}" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    {% endfor %}
+    
+    <h2>Audios</h2>
+    {% for audio in audios %}
+        <h3>{{ audio.title }}</h3>
+        <audio controls>
+            <source src="{{ audio.audio.url }}" type="audio/mpeg">
+            Your browser does not support the audio tag.
+        </audio>
+    {% endfor %}
+    
+    <a href="{% url 'upload_image' %}">Upload Image</a>
+    <a href="{% url 'upload_video' %}">Upload Video</a>
+    <a href="{% url 'upload_audio' %}">Upload Audio</a>
+</body>
+</html>
